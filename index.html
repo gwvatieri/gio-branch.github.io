@@ -44,6 +44,7 @@
         $('input[name="utm_'+utm_param+'"]').val('');
         console.log('Reset code for cookie time');
         $('input[name="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
+        $('input[id="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
         console.log('Set input to ' + Cookies.get(utm_param+'y'));
       } else {
           console.log('Using current code / no code set');
@@ -73,7 +74,7 @@
 
       <form>
 	  	  <!-- Hidden UTM Fields -->
-     	<input type="hidden" name="utm_source" value="">
+     	<input type="hidden" id="utm_source" name="utm_source" value="">
      	<input type="hidden" name="utm_medium" value="">
      	<input type="hidden" name="utm_campaign" value="">
      	<input type="hidden" name="utm_content" value="">
