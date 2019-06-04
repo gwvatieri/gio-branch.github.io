@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script>
+    // load Branch
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+    // init Branch
+    branch.init('key_live_gmGAfGq75ZUKESemCfGqZiejFzdm8h7u', function(err, data) {
+      console.log(data);
+    });
+
+    jQuery(document).ready(function($){
+        // Parse the URL
+        function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
+          var regex = new RegExp("[\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        // UTM TRACKING
+        // Get the URL parameters variable by UTM names
+        var source = getParameterByName('utm_source');
+        var medium = getParameterByName('utm_medium');
+        var campaign = getParameterByName('utm_campaign');
+        var content = getParameterByName('utm_content');
+        var term = getParameterByName('utm_term');
+
+        console.log('source: ' + source);
+        console.log('campaign: ' + campaign);
+    });
+
+</script>
+
+</head>
+  <body>
+      <h1>Hello World</h1>
+      <p>I'm hosted on Gio's repo!</p><br> <br>
+      <a id="branch_deep_link" href="https://gvatieri.app.link/dCebib6UfX" class="link">Deep Link</a><br><br>
+  </body>
+</html>
