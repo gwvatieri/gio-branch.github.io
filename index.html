@@ -9,6 +9,8 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
 <script>
   // load Branch
     (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
@@ -36,18 +38,18 @@
 
     // Set UTM function: assumes all hidden fields follow this format : <input name="utm_term" type="hidden">
     var set_utm = function setutm(utm_param, utm_val){
-    if (Cookies.get(utm_param+'y') != undefined) {
-    jQuery('input[name="utm_'+utm_param+'"]').val('');
-    //console.log('Reset code for cookie time');
-    jQuery('input[name="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
-    //console.log('Set input to ' + Cookies.get(utm_param+'y'));
-    } else {
-    //console.log('Using current code / no code set');
-    if (utm_val != "" ) {
-      //console.log('Set the cookie');
-      Cookies.set(utm_param+'y', utm_val, {path: '/'});
-    };
-    };
+      if (Cookies.get(utm_param+'y') != undefined) {
+        jQuery('input[name="utm_'+utm_param+'"]').val('');
+        //console.log('Reset code for cookie time');
+        jQuery('input[name="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
+        //console.log('Set input to ' + Cookies.get(utm_param+'y'));
+      } else {
+          //console.log('Using current code / no code set');
+        if (utm_val != "" ) {
+          //console.log('Set the cookie');
+          Cookies.set(utm_param+'y', utm_val, {path: '/'});
+        };
+      };
     }
 
     // Do the Set UTM function for each UTM
