@@ -40,9 +40,10 @@
     // Set UTM function: assumes all hidden fields follow this format : <input name="utm_term" type="hidden">
     var set_utm = function setutm(utm_param, utm_val){
       if (Cookies.get(utm_param+'y') != undefined) {
-        jQuery('input[name="utm_'+utm_param+'"]').val('');
+        //jQuery('input[name="utm_'+utm_param+'"]').val('');
+        $('input[name="utm_'+utm_param+'"]').val('');
         console.log('Reset code for cookie time');
-        jQuery('input[name="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
+        $('input[name="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
         console.log('Set input to ' + Cookies.get(utm_param+'y'));
       } else {
           console.log('Using current code / no code set');
