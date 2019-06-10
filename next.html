@@ -39,7 +39,9 @@
         console.log('source: ' + source);
         console.log('campaign: ' + campaign);
 
-        $(".link").attr('href','https://lightroom.app.link'+'?'+'channel='+source+'&campaign='+campaign);
+        var newLink = 'https://lightroom.app.link'+'?'+'channel='+source+'&campaign='+campaign;
+        $(".link").attr('href', newLink);
+        $('#content').text(newLink);
     });
 
 </script>
@@ -47,6 +49,7 @@
 </head>
   <body>
       <h1>Get Started</h1>
-      <a id="branch_deep_link" href="" class="link">Deep Link built dynamically using url's parameters</a><br><br>
+      <a id="branch_deep_link" href="" class="link">Built dynamically using URL's params</a><br><br>
+      <div id="content"></div>
   </body>
 </html>
