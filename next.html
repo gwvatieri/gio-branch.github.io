@@ -39,9 +39,14 @@
         console.log('source: ' + source);
         console.log('campaign: ' + campaign);
 
-        var newLink = 'https://lightroom.app.link'+'?'+'channel='+source+'&campaign='+campaign;
-        $(".link").attr('href', newLink);
-        $('#content').text(newLink);
+        var adobeLink = 'https://lightroom.app.link'+'?'+'channel='+source+'&campaign='+campaign;
+        $(".link").attr('href', adobeLink);
+        $('#content').text(adobeLink);
+
+        var demoLink = 'https://gvatieri.app.link/QAllyREqpX'+'?'+'channel='+source+'&campaign='+campaign;
+        $(".linkDemo").attr('href', demoLink);
+        $('#demoContent').text(demoLink);
+
     });
 
 </script>
@@ -50,6 +55,9 @@
   <body>
       <h1>Get Started</h1>
       <a id="branch_deep_link" href="" class="link">Built dynamically using URL's params</a><br><br>
-      <div id="content"></div>
+      <div id="content"></div><br><br>
+      <a id="demo_deep_link" href="" class="linkDemo">Demo App</a><br><br>
+      <div id="demoContent"></div><br><br>
+
   </body>
 </html>
