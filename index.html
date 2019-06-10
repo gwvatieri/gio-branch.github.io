@@ -54,6 +54,15 @@
         //set_utm('content', content);
         //set_utm('term', term);
     });
+
+    var longLink = "https://lightroom.app.link/e/v66r5kdM7W?"
+    + "~campaign=" + data.data_parsed["~campaign"]
+    + "&~feature=" + data.data_parsed["~feature"]
+    + "&~source=" + data.data_parsed["~source"]
+    + "&~tags=" + data.data_parsed["~tags"];
+
+    longLink = longLink + "&$fallback_url=https%3A%2F%2Fdjoe-branch.github.io%2Fadobelr.html";
+    document.getElementById('anchor1').href = longLink || err;
 </script>
 
 </head>
@@ -70,5 +79,10 @@
   	        <input id="utm_term" name="utm_term" value=""-->
             <input type="submit" value="Submit">
          </form>
+
+         <br><br>
+         <button id="button1">deep link 1</button>
+         <a id="anchor1" href='#'>Link</a>
+  <br><br>
     </body>
 </html>
