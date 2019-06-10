@@ -12,6 +12,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
 <script>
+    // load Branch
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+    // init Branch
+    branch.init('key_live_gmGAfGq75ZUKESemCfGqZiejFzdm8h7u', function(err, data) {
+      console.log(data);
+    });
+
     jQuery(document).ready(function($){
         // Parse the URL
         function getParameterByName(name) {
@@ -55,14 +62,16 @@
         //set_utm('term', term);
     });
 
-    var longLink = "https://lightroom.app.link/e/v66r5kdM7W?"
-    + "~campaign=" + data.data_parsed["~campaign"]
-    + "&~feature=" + data.data_parsed["~feature"]
-    + "&~source=" + data.data_parsed["~source"]
-    + "&~tags=" + data.data_parsed["~tags"];
+    branch.data(function(err,data) {
+      var longLink = "https://lightroom.app.link/e/v66r5kdM7W?"
+          + "~campaign=" + data.data_parsed["~campaign"]
+          + "&~feature=" + data.data_parsed["~feature"]
+          + "&~source=" + data.data_parsed["~source"]
+          + "&~tags=" + data.data_parsed["~tags"];
 
-    longLink = longLink + "&$fallback_url=https%3A%2F%2Fdjoe-branch.github.io%2Fadobelr.html";
-    document.getElementById('anchor1').href = longLink || err;
+      longLink = longLink + "&$fallback_url=https%3A%2F%2Fdjoe-branch.github.io%2Fadobelr.html";
+      document.getElementById('anchor1').href = longLink || err;
+    });
 </script>
 
 </head>
