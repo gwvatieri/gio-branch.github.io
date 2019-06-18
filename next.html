@@ -39,7 +39,7 @@
         console.log('source: ' + source);
         console.log('campaign: ' + campaign);
 
-        var adobeLink = 'https://lightroom.app.link'+'?'+'channel='+source+'&campaign='+campaign;
+        var adobeLink = 'https://lightroom.test-app.link'+'?'+'channel='+source+'&campaign='+campaign;
         $(".link").attr('href', adobeLink);
         $('#content').text(adobeLink);
 
@@ -55,9 +55,9 @@
   <body>
       <h1>Get Started</h1>
       <h3>(Built dynamically using URL's params)</h3>
-      <a id="branch_deep_link" href="" class="link">Lightroom App (Quick Link)</a><br><br>
+      <a id="branch_deep_link" href="" class="link">Lightroom App (Quick Link/test domain)</a><br><br>
       <div id="content"></div><br><br>
-      <a id="demo_deep_link" href="" class="linkDemo">Demo App</a><br><br>
+      <a id="demo_deep_link" href="" class="linkDemo">Demo App (Lin)</a><br><br>
       <div id="demoContent"></div><br><br>
 
   </body>
