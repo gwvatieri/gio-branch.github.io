@@ -17,7 +17,7 @@
     // init Branch
     branch.init('key_live_gmGAfGq75ZUKESemCfGqZiejFzdm8h7u', function(err, data) {
       console.log(data);
-      disableTracking();
+      branch.disableTracking(true);
     });
 
     jQuery(document).ready(function($){
