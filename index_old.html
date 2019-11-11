@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script>
+    // load Branch
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+    // init Branch
+    branch.init('key_live_gmGAfGq75ZUKESemCfGqZiejFzdm8h7u', function(err, data) {
+      console.log(data);
+      branch.disableTracking(true);
+    });
+
+    jQuery(document).ready(function($){
+        // Parse the URL
+        function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
+          var regex = new RegExp("[\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        // UTM TRACKING
+        // Get the URL parameters variable by UTM names
+        var source = getParameterByName('utm_source');
+        var medium = getParameterByName('utm_medium');
+        var campaign = getParameterByName('utm_campaign');
+        var content = getParameterByName('utm_content');
+        var term = getParameterByName('utm_term');
+
+        // Set UTM function: assumes all hidden fields follow this format : <input name="utm_term" type="hidden">
+        var set_utm = function setutm(utm_param, utm_val){
+          if (Cookies.get(utm_param+'y') != undefined) {
+            //jQuery('input[name="utm_'+utm_param+'"]').val('');
+            $('input[name="utm_'+utm_param+'"]').val('');
+            console.log('Reset code for cookie time');
+            $('input[name="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
+            $('input[id="utm_'+utm_param+'"]').val(Cookies.get(utm_param+'y'));
+            console.log('Set input to ' + Cookies.get(utm_param+'y'));
+          } else {
+              console.log('Using current code / no code set');
+            if (utm_val != "" ) {
+              console.log('Set the cookie');
+              Cookies.set(utm_param+'y', utm_val, {path: '/'});
+            };
+          };
+        }
+
+        // Do the Set UTM function for each UTM
+        set_utm('source', source);
+        //set_utm('medium', medium);
+        set_utm('campaign', campaign);
+        //set_utm('content', content);
+        //set_utm('term', term);
+    });
+
+    branch.data(function(err,data) {
+      var longLink = "https://lightroom.app.link/e/v66r5kdM7W?"
+          + "~campaign=" + data.data_parsed["~campaign"]
+          + "&~feature=" + data.data_parsed["~feature"]
+          + "&~source=" + data.data_parsed["~source"]
+          + "&~tags=" + data.data_parsed["~tags"];
+
+      longLink = longLink + "&$fallback_url=https%3A%2F%2Fgwvatieri.github.io%2Fnext.html";
+      document.getElementById('anchor1').href = longLink || err;
+    });
+</script>
+
+</head>
+  <body>
+      <h1>Landing Page</h1>
+      <p>(Hosted on Gio's repo)</p><br>
+
+      <h3>General Link [part I]</h3>
+        <form action="/next.html" method="get">
+	  	    <!-- Hidden UTM Fields -->
+     	      <input id="utm_source" name="utm_source" value="">
+            <input id="utm_campaign" name="utm_campaign" value="">
+     	      <!--input id="utm_medium" name="utm_medium" value="">
+     	      <input id="utm_content" name="utm_content" value="">
+  	        <input id="utm_term" name="utm_term" value=""-->
+            <input type="submit" value="Submit">
+         </form>
+
+         <br><br>
+         <h3>Branch Link [part II]</h3>
+         <a id="anchor1" href='#'>Next Page</a>
+
+         <br><br>
+         <h3>Amazon Test</h3>
+         <a id="anchor1" href='amzn://apps/android?asin=B07R88YW8T'>B07R88YW8T</a><br>
+         <a id="anchor1" href='amzn://apps/android?asin=B00I5VT8KY'>B00I5VT8KY</a><br>
+         <a id="anchor1" href='intent://open?link_click_id=667414711035006755#Intent;scheme=fsgo;package=com.foxsports.videogo;end'>com.foxsports.videogo</a>
+  <br><br>
+    </body>
+</html>
